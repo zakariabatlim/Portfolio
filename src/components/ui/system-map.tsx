@@ -1,36 +1,47 @@
-import { Braces, Database, LineChart, PanelsTopLeft } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
-const modules = [
-  { label: "Entrées", value: "Données", Icon: LineChart },
-  { label: "Traitement", value: "Python", Icon: Braces },
-  { label: "Persistance", value: "SQL", Icon: Database },
-  { label: "Interface", value: "Produit", Icon: PanelsTopLeft },
+const projectProofs = [
+  { slug: "stockflow", title: "StockFlow", category: "Application desktop", stack: "Python · PostgreSQL", output: "Application" },
+  { slug: "credit-risk-prediction", title: "Credit Risk", category: "Machine learning", stack: "Pandas · scikit-learn", output: "Classification" },
+  { slug: "prospection-numerique-maroc", title: "Prospection", category: "Automatisation & Data", stack: "Python · SQLite", output: "Outil métier" },
 ];
 
 export function SystemMap() {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-strong)] p-4 shadow-[var(--shadow)] sm:p-6" aria-hidden="true">
-      <div className="mb-8 flex items-center justify-between border-b border-[var(--line)] pb-4 font-[family-name:var(--font-mono)] text-[0.7rem] uppercase tracking-[0.15em] text-[var(--muted)]">
-        <span>System map / 01</span>
-        <span className="text-[var(--terracotta)]">Architecture logicielle</span>
+    <aside className="proof-deck overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-strong)] p-4 shadow-[var(--shadow)] sm:p-5" aria-label="Trois projets réalisés">
+      <div className="flex items-center justify-between border-b border-[var(--line)] pb-3 font-[family-name:var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] text-[var(--muted)]">
+        <span>Selected systems / 03</span>
+        <span className="inline-flex items-center gap-2 text-[var(--terracotta)]">
+          <span className="size-1.5 rounded-full bg-current" aria-hidden="true" /> Réalisés
+        </span>
       </div>
-      <div className="relative grid grid-cols-2 gap-3">
-        <svg className="pointer-events-none absolute inset-0 size-full text-[var(--line)]" viewBox="0 0 400 260" aria-hidden="true" preserveAspectRatio="none">
-          <path d="M100 65H200V195H300" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="5 6" />
-          <circle cx="200" cy="130" r="4" fill="var(--terracotta)" />
-        </svg>
-        {modules.map(({ label, value, Icon }, index) => (
-          <div key={label} className={`relative min-h-32 rounded-lg border border-[var(--line)] bg-[var(--background)] p-4 ${index === 1 || index === 2 ? "translate-y-4" : ""}`}>
-            <Icon aria-hidden="true" size={20} className="mb-8 text-[var(--cobalt)]" />
-            <span className="block font-[family-name:var(--font-mono)] text-[0.65rem] uppercase tracking-[0.12em] text-[var(--muted)]">{label}</span>
-            <strong className="text-lg font-semibold">{value}</strong>
-          </div>
+
+      <div className="mt-3 grid gap-2">
+        {projectProofs.map((project, index) => (
+          <Link
+            key={project.slug}
+            href={`/projects/${project.slug}`}
+            aria-label={`Voir le projet ${project.title}`}
+            className="project-signal group grid grid-cols-[2rem_1fr_auto] items-center gap-3 rounded-lg border border-[var(--line)] bg-[var(--background)] p-3 no-underline"
+          >
+            <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--cobalt)]">0{index + 1}</span>
+            <span className="min-w-0">
+              <span className="block font-[family-name:var(--font-mono)] text-[0.62rem] uppercase tracking-[0.11em] text-[var(--muted)]">{project.category}</span>
+              <strong className="mt-0.5 block text-base font-semibold tracking-[-0.02em]">{project.title}</strong>
+              <span className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-[var(--muted)]">
+                <span>{project.stack}</span><span aria-hidden="true">→</span><span>{project.output}</span>
+              </span>
+            </span>
+            <ArrowUpRight aria-hidden="true" size={17} className="text-[var(--muted)] transition-[color,transform] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--cobalt)] group-focus-visible:text-[var(--cobalt)]" />
+          </Link>
         ))}
       </div>
-      <div className="mt-9 flex items-center gap-3 text-xs text-[var(--muted)]">
+
+      <div className="mt-3 flex items-center gap-3 font-[family-name:var(--font-mono)] text-[0.62rem] uppercase tracking-[0.1em] text-[var(--muted)]">
         <span className="h-px flex-1 bg-[var(--line)]" />
-        Apprendre · Construire · Documenter
+        Code · Données · Usage
       </div>
-    </div>
+    </aside>
   );
 }

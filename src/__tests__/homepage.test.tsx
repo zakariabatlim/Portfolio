@@ -7,7 +7,7 @@ describe("homepage", () => {
   it("presents the factual profile and all three projects", () => {
     render(<Home />);
 
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/technicien spécialisé/i);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/je construis des solutions logicielles/i);
     expect(screen.getByRole("heading", { name: "StockFlow" })).toBeVisible();
     expect(screen.getByRole("heading", { name: /prédiction du risque de crédit/i })).toBeVisible();
     expect(screen.getByRole("heading", { name: /prospection numérique/i })).toBeVisible();
