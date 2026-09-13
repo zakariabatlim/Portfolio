@@ -20,6 +20,8 @@ export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
 }
 
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = getProject(slug);
@@ -99,7 +101,7 @@ export default async function ProjectPage({ params }: PageProps) {
             </div>
           ) : null}
 
-          <aside className="my-10 rounded-xl bg-[var(--cobalt)] p-7 text-white sm:p-10">
+          <aside className="my-10 rounded-xl bg-[var(--cobalt-panel)] p-7 text-white sm:p-10">
             <p className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.12em] text-white/70">Échanger sur ce projet</p>
             <h2 className="mt-4 max-w-2xl text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Une question sur la démarche ou les choix techniques&nbsp;?</h2>
             <a className="mt-7 inline-flex items-center gap-2 font-semibold underline underline-offset-4" href={`mailto:${profile.email}?subject=${encodeURIComponent(`Projet ${project.title}`)}`}>Contacter Zakaria <ArrowUpRight aria-hidden="true" size={18} /></a>

@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import type { Project } from "@/types/portfolio";
@@ -33,7 +33,7 @@ export function ProjectCaseCard({ project, index }: { project: Project; index: n
         </div>
         <Link className="group inline-flex items-center gap-2 self-start font-semibold text-[var(--cobalt)]" href={getProjectHref(project.slug)}>
           Lire l’étude de cas
-          <ArrowUpRight aria-hidden="true" size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <ArrowRight aria-hidden="true" size={18} className="transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
     </article>

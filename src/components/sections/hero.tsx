@@ -15,7 +15,7 @@ export function Hero() {
           </span>
           <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.12em] text-[var(--muted)]">Maroc · Remote</span>
         </div>
-        <p className="eyebrow mb-5">Développement Python · Data · Automatisation</p>
+        <p className="eyebrow mb-5">Zakaria Batlamouss · Développeur Python & Data</p>
         <h1 className="display-title max-w-4xl">
           Titulaire d’un diplôme de <span className="text-[var(--cobalt)]">technicien spécialisé</span> en développement informatique.
         </h1>

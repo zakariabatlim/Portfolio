@@ -10,7 +10,8 @@
   --cobalt: #1747d1;
   --cobalt-strong: #1039b0;
   --cobalt-soft: #e8edff;
-  --terracotta: #b85c3f;
+  --cobalt-panel: #1747d1;
+  --terracotta: #9f432c;
   --header: rgba(247, 246, 241, 0.88);
   --shadow: 0 22px 65px rgba(22, 28, 45, 0.08);
 }
@@ -25,9 +26,22 @@
   --cobalt: #86a1ff;
   --cobalt-strong: #a9bbff;
   --cobalt-soft: #1c2b5d;
+  --cobalt-panel: #294fbf;
   --terracotta: #e18767;
   --header: rgba(16, 20, 28, 0.9);
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+}
+
+.theme-icon-dark {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-light {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-dark {
+  display: block;
 }
 
 * {
@@ -96,7 +110,7 @@ button:focus-visible {
 
 .display-title {
   margin: 0;
-  font-size: clamp(3rem, 7.2vw, 6.8rem);
+  font-size: clamp(3rem, 5.2vw, 4.8rem);
   font-weight: 580;
   letter-spacing: -0.065em;
   line-height: 0.96;

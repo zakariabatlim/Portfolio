@@ -9,10 +9,10 @@ const modules = [
 
 export function SystemMap() {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-strong)] p-4 shadow-[var(--shadow)] sm:p-6" aria-label="Schéma décoratif d’un flux logiciel">
+    <div className="relative overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-strong)] p-4 shadow-[var(--shadow)] sm:p-6" aria-hidden="true">
       <div className="mb-8 flex items-center justify-between border-b border-[var(--line)] pb-4 font-[family-name:var(--font-mono)] text-[0.7rem] uppercase tracking-[0.15em] text-[var(--muted)]">
         <span>System map / 01</span>
-        <span className="text-[var(--terracotta)]">En construction</span>
+        <span className="text-[var(--terracotta)]">Architecture logicielle</span>
       </div>
       <div className="relative grid grid-cols-2 gap-3">
         <svg className="pointer-events-none absolute inset-0 size-full text-[var(--line)]" viewBox="0 0 400 260" aria-hidden="true" preserveAspectRatio="none">

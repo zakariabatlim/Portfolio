@@ -2,16 +2,9 @@ import { Code2, FileDown, UsersRound } from "lucide-react";
 import Link from "next/link";
 
 import { profile } from "@/data/profile";
+import { navigationLinks } from "@/data/navigation";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
-
-const navLinks = [
-  ["À propos", "/#a-propos"],
-  ["Projets", "/#projets"],
-  ["Compétences", "/#competences"],
-  ["Parcours", "/#parcours"],
-  ["Contact", "/#contact"],
-];
 
 export function SiteHeader() {
   return (
@@ -29,7 +22,7 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Navigation principale" className="hidden items-center gap-5 md:flex">
-          {navLinks.map(([label, href]) => (
+          {navigationLinks.map(({ label, href }) => (
             <Link key={href} href={href} className="rule-link text-sm font-medium">
               {label}
             </Link>
@@ -43,7 +36,7 @@ export function SiteHeader() {
           <a className="hidden rounded-md p-2 text-[var(--muted)] hover:text-[var(--cobalt)] lg:block" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn de Zakaria Batlamouss">
             <UsersRound aria-hidden="true" size={19} />
           </a>
-          <a className="hidden min-h-10 items-center gap-2 rounded-md border border-[var(--line)] px-3 text-sm font-semibold hover:border-[var(--cobalt)] lg:flex" href={profile.cvPath} download>
+          <a className="hidden min-h-10 items-center gap-2 rounded-md border border-[var(--line)] px-3 text-sm font-semibold hover:border-[var(--cobalt)] md:flex" href={profile.cvPath} download>
             <FileDown aria-hidden="true" size={17} /> CV
           </a>
           <ThemeToggle />

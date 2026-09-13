@@ -2,24 +2,33 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { profile } from "@/data/profile";
-
-const links = [
-  ["À propos", "/#a-propos"],
-  ["Projets", "/#projets"],
-  ["Compétences", "/#competences"],
-  ["Parcours", "/#parcours"],
-  ["Contact", "/#contact"],
-];
+import { navigationLinks } from "@/data/navigation";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [open]);
 
   return (
     <div className="md:hidden">
       <button
+        ref={triggerRef}
         type="button"
         aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
         aria-expanded={open}
@@ -35,7 +44,7 @@ export function MobileNav() {
           className="absolute inset-x-0 top-full border-b border-[var(--line)] bg-[var(--background)] px-4 py-5 shadow-[var(--shadow)]"
         >
           <nav aria-label="Navigation mobile" className="flex flex-col gap-1">
-            {links.map(([label, href]) => (
+            {navigationLinks.map(({ label, href }) => (
               <Link
                 key={href}
                 href={href}
