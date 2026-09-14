@@ -1,4 +1,3 @@
-import { Code2, FileDown, UsersRound } from "lucide-react";
 import Link from "next/link";
 
 import { profile } from "@/data/profile";
@@ -30,14 +29,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a className="hidden rounded-md p-2 text-[var(--muted)] hover:text-[var(--cobalt)] lg:block" href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub de Zakaria Batlamouss">
-            <Code2 aria-hidden="true" size={19} />
-          </a>
-          <a className="hidden rounded-md p-2 text-[var(--muted)] hover:text-[var(--cobalt)] lg:block" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn de Zakaria Batlamouss">
-            <UsersRound aria-hidden="true" size={19} />
-          </a>
-          <a className="hidden min-h-10 items-center gap-2 rounded-md border border-[var(--line)] px-3 text-sm font-semibold hover:border-[var(--cobalt)] md:flex" href={profile.cvPath} download>
-            <FileDown aria-hidden="true" size={17} /> CV
+          <a className="hidden min-h-10 items-center rounded-md border border-[var(--line)] px-3 text-sm font-semibold text-[var(--muted)] transition-colors hover:border-[var(--cobalt)] hover:text-[var(--foreground)] md:flex" href={profile.cvPath} download>
+            CV
           </a>
           <ThemeToggle />
           <MobileNav />
