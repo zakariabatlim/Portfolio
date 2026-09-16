@@ -4,16 +4,25 @@ import { describe, expect, it } from "vitest";
 import { Hero } from "@/components/sections/hero";
 
 describe("Hero", () => {
-  it("keeps one discreet eyebrow and a focused value proposition", () => {
+  it("presents a calm, concise message with one rotating specialty line", () => {
     const { container } = render(<Hero />);
 
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /je construis des solutions logicielles qui relient le code, les données et les besoins réels/i,
+        name: "Je transforme des idées en solutions concrètes.",
       }),
     ).toBeVisible();
     expect(screen.getAllByText("Développeur logiciel · Python · Data")).toHaveLength(1);
+    expect(screen.getByText("Je développe →")).toBeInTheDocument();
+    expect(screen.getByText("Applications Python")).toBeInTheDocument();
+    expect(screen.getByText("Outils Data")).toBeInTheDocument();
+    expect(screen.getByText("Automatisation")).toBeInTheDocument();
+    expect(screen.getByText("Backend")).toBeInTheDocument();
+    expect(screen.getByText("Des solutions pensées pour des besoins réels.")).toBeVisible();
+    expect(screen.queryByText("gestion de stock")).not.toBeInTheDocument();
+    expect(screen.queryByText("machine learning")).not.toBeInTheDocument();
+    expect(screen.queryByText("|", { exact: true })).not.toBeInTheDocument();
     expect(
       screen.getByText("Technicien spécialisé en développement informatique"),
     ).toBeVisible();
@@ -31,22 +40,17 @@ describe("Hero", () => {
     );
   });
 
-  it("renders three semantic project cards linked to their real routes", () => {
-    render(<Hero />);
+  it("presents the portrait inside a continuous pixel-built Batlamouss identity visual", () => {
+    const { container } = render(<Hero />);
 
-    expect(screen.getAllByRole("article", { name: /Projet/i })).toHaveLength(3);
-
-    expect(screen.getByRole("link", { name: "Voir le projet StockFlow" })).toHaveAttribute(
-      "href",
-      "/projects/stockflow",
-    );
-    expect(screen.getByRole("link", { name: "Voir le projet Credit Risk" })).toHaveAttribute(
-      "href",
-      "/projects/credit-risk-prediction",
-    );
-    expect(screen.getByRole("link", { name: "Voir le projet Prospection" })).toHaveAttribute(
-      "href",
-      "/projects/prospection-numerique-maroc",
-    );
+    expect(
+      screen.getByRole("img", { name: "Portrait de Zakaria Batlamouss" }),
+    ).toBeVisible();
+    expect(
+      screen.getByLabelText("Identité visuelle de Zakaria Batlamouss"),
+    ).toBeVisible();
+    expect(container.querySelector(".pixel-name-matrix")).toBeInTheDocument();
+    expect(container.querySelectorAll('[data-pixel="active"]').length).toBeGreaterThan(100);
+    expect(screen.queryByRole("article", { name: /Projet/i })).not.toBeInTheDocument();
   });
 });
